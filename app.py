@@ -91,11 +91,13 @@ with main_panel:
         st.title("🏠" + page)
         st.header(' **Data Analytics and Visualization Project** ')
         st.write('')
-        st.write('')
-        st.write('')
         
         image = Image.open("images/space_rocket.png")
-        st.image(image)
+        st.image(image,width=600)
+        url1 = "https://www.linkedin.com/in/nishesh-jain/"
+        url2 = "https://github.com/nisheshjain12"
+        st.write(" By - Nishesh Jain [link](%s)" % url1 )
+        st.write(" GitHub -  [link](%s)" % url2 )
     
     #####################################################################################
     ######                                                                         ######
