@@ -76,20 +76,9 @@ with st.sidebar:
              'The Cold war',
              'Best Every Year',
              'Geo Analysis',
-             'India`s Place',
-             'Reference'
+             'India`s Place'
              ]
     page = st.radio('Navigation', pages)
-
-# Define icons for radio buttons
-# home_icon = "🏠"
-# data_icon = "📊"
-# overview_icon = "🌐"
-# factors_icon = "🤔"
-# war_icon = "🧊"
-# best_icon = "🏆"
-# geo_icon = "🗺️"
-# india_icon = "🇮🇳"
 
 # Create main panel
 main_panel = st.container()
@@ -105,7 +94,7 @@ with main_panel:
         st.write('')
         st.write('')
         
-        image = Image.open("space_rocket.png")
+        image = Image.open("images/space_rocket.png")
         st.image(image)
     
     #####################################################################################
@@ -850,80 +839,7 @@ with main_panel:
     #####################################################################################
     ######                                                                         ######
     #####################################################################################
-    # elif page == 'Time Series Decomposition':
-    #     st.write('This is Page 3.')
-    #     df['month_year'] = df['year'].astype(str) + '-' + df['month'].astype(str)
-    #     df['month_year'] = pd.to_datetime(df['month_year']).dt.to_period('M')
-    #     ds = df.groupby(['month_year'])['alpha3'].count().reset_index()
-    #     ds.columns = ['month_year', 'count']
-    #     ds['month_year'] = ds['month_year'].astype(str)    
-        
-    #     dates = ['1957-10-01', '2020-08-02']
-    #     start, end = [datetime.strptime(_, "%Y-%m-%d") for _ in dates]
-    #     dd = pd.DataFrame(
-    #         list(
-    #             OrderedDict(((start + timedelta(_)).strftime(r"%Y-%m"), None) for _ in range((end - start).days)).keys()
-    #         ), 
-    #         columns=['date']
-    #     )
-    #     dd['date'] = pd.to_datetime(dd['date'])
-    #     ds['month_year'] = pd.to_datetime(ds['month_year'])
-    #     res = pd.merge(ds, dd, how='outer', left_on='month_year', right_on='date')
-    #     res = res.sort_values('date')[['date', 'count']]
-    #     res = res.fillna(0).set_index('date')
-        
-    #     result = seasonal_decompose(res, model='additive', period=12)
-    #     fig = make_subplots(rows=4, cols=1, shared_xaxes=True, 
-    #                         vertical_spacing=0.07, subplot_titles=("Observed", "Trend", "Seasonal", "Residual"),
-    #                         row_heights=[0.1, 0.1, 0.1, 0.1])
-    #     for i, trace_name in enumerate(['observed', 'trend', 'seasonal', 'resid']):
-    #         subplot = go.Scatter(x=result.observed.index, y=getattr(result, trace_name).values, mode='lines', showlegend=False)
-    #         fig.add_trace(subplot, row=i+1, col=1)
-    #     fig.update_layout(
-    #         height=1300,
-    #         title=dict(text='Seasonal Decomposition of Time Series', font=dict(size=24, color='white')),
-    #         xaxis=dict(title='Date', showgrid=True, gridcolor='lightgray', gridwidth=0.1),
-    #         yaxis=dict(title='Value', showgrid=True, gridcolor='lightgray', gridwidth=0.1),
-    #         font=dict(family='Arial', size=16, color='white'),
-    #         plot_bgcolor='rgba(0,0,0,0)',
-    #         paper_bgcolor='rgba(0,0,0,0)'
-    #     )
-    #     st.plotly_chart(fig, use_container_width=True)
-    
-    #     #------------------------------------------------------------------------------------
-    #     st.markdown('''
-    #              ### Simple ARIMA Model
-    #              not working
-    #              ''')
-    #     # MODEL
-    #     model = ARIMA(ds['count'], order=(10,1,2))
-    #     model_fit = model.fit()
-        
-    #     preds = model_fit.forecast(16)
-    #     preds = preds.tolist()
-    #     preds = [int(item) for item in preds]
-    #     months = [
-    #         '2020-09-01', '2020-10-01', '2020-11-01', '2020-12-01', 
-    #         '2021-01-01', '2021-02-01', '2021-03-01', '2021-04-01', 
-    #         '2021-05-01', '2021-06-01', '2021-07-01', '2021-08-01', 
-    #         '2021-09-01', '2021-10-01', '2021-11-01', '2021-12-01'
-    #     ]
-    #     new_df = pd.DataFrame()
-    #     new_df['month_year'] = months
-    #     new_df['count'] = preds
-    #     data = pd.concat([ds, new_df])
 
-    #     fig = px.line(
-    #         data, 
-    #         x="month_year", 
-    #         y="count", 
-    #         title='Launches per month prediction'
-    #     )
-    #     st.plotly_chart(fig, use_container_width=True)
-        
-    #####################################################################################
-    ######                                                                         ######
-    #####################################################################################
     elif page == 'India`s Place':
         st.title("" + page)
         st.markdown('''
@@ -1030,62 +946,3 @@ with main_panel:
         #####################################################################################
         ######                                                                         ######
         #####################################################################################
-
-    elif page == 'Reference':
-            url1 = "https://www.arianespace.com/press-release/ariane-5-successful-launch-webb-space-telescope/ "
-            url2 = "https://chinapower.csis.org/china-space-launch/"
-            url3 = "https://escholarship.org/content/qt0kj1q52j/qt0kj1q52j_noSplash_c9b2ab6f54dac13b34007979f3a8dd95.pdf?t=prfwji"
-            url4 = "https://www.forbes.com/sites/startswithabang/2019/07/11/this-is-why-the-soviet-union-lost-the-space-race-to-the-usa/?sh=61cad0141925 "
-            url5 = "https://www.nasa.gov/sites/default/files/files/SEINSI.pdf"
-           
-            st.markdown('''# Reference''')
-            st.write(" - Arianespace Successful Launch[link](%s)" % url1 )
-            st.write(" - China space launch [link](%s)" % url2 )
-            st.write(" - Soviet union lost the space race [link](%s)" % url3 )
-            st.write(" - The post Cold War issues [link](%s)" % url4 )
-            st.write(" - Nasa Website [link](%s)" % url5 )
-            
-
-        
-        
-        #---------------------------------------------------------------------------------------
-        # trace1 = go.Scatter(
-        #     x=ds_f[ds_f['country'] == 'USA']['year'],
-        #     y=ds_f[ds_f['country'] == 'USA']['Success_pct'],
-        #     name='USA',
-        #     line=dict(color='#1f77b4', width=2)
-        # )
-        # trace2 = go.Scatter(
-        #     x=ds_f[ds_f['country'] == 'India']['year'],
-        #     y=ds_f[ds_f['country'] == 'India']['Success_pct'],
-        #     name='India',
-        #     line=dict(color='#ff7f0e', width=2)
-        # )
-        # data = [trace1, trace2]
-        # layout = go.Layout(
-        #     title='Success Percentage by Year and Country',
-        #     xaxis=dict(title='Year'),
-        #     yaxis=dict(title='Success Percentage')
-        # )
-        # fig = go.Figure(data=data, layout=layout)
-        # st.plotly_chart(fig, use_container_width=True)
-
-        
-        
-
-# Add footer
-# st.markdown("""
-# <style>
-# .footer {
-#   position: fixed;
-#   left: 0;
-#   bottom: 0;
-#   width: 100%;
-#   background-color: #f5f5f5;
-#   text-align: center;
-# }
-# </style>
-# <div class="footer">
-# <p>Made with ❤️ by [Your Name]</p>
-# </div>
-# """, unsafe_allow_html=True)
